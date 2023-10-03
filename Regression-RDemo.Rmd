@@ -60,27 +60,40 @@ Let's try taking this a step further playing around with some Stratified random 
 #library(survey)
 ## Using the Survey Library
 N=200
+n_masc=nrow(starwars %>% filter(gender=="masculine"))
+n_fem=nrow(starwars %>% filter(gender=="feminine"))
 
-# Let's find out the number of characters of each gender category in the sample.
+# In the sample there are 17 feminine characters and 66 masculine characters.
+
+## Need to create a weight variable for 20% fem and 80% masculine and then a second variable that spreads the weight amongst the sample.
+
+starwars <- starwars %>% 
+  mutate(pop_strata_weight = case_when(gender=="feminine" ~ 40,
+                                   gender=="masculine" ~ 160))
+
+starwars <- starwars %>% 
+  mutate(samp_strata_weight = case_when(gender=="feminine" ~ 40/17,
+                                   gender=="masculine" ~ 160/66)
+         
+         
+starwars_noNA <- starwars %>% filter(!is.na(gender))
 
 
-# Now we need to create a weight variable for 20% fem and 80% masculine and then a second variable that spreads the weight amongst the sample.
+strata.design <- svydesign(id=~1,
+                       strata=~gender,
+                       weights = ~samp_strata_weight, 
+                       data=starwars_noNA,
+                       fpc=~pop_strata_weight)
+  
+
+svyratio(~mass, ~height, design=strata.design)
 
 
-# Since we are setting the design to be based on gender, we will remove any missing genders.
+svyratio(~mass, ~height, design=strata.design, na.rm=TRUE)
 
 
-# Uncomment out the code, and fill in the weights and fpc variables based on your previous few lines of code. 
-
-#strata.design <- svydesign(id=~1,
-#                       strata=~gender,
-#                       weights = ~samp_strata_weight, 
-#                       data=starwars_noNA,
-#                       fpc=~pop_strata_weight)
-
-
-# Now let's see the reuslts:  
-# svyratio(~mass, ~height, design=strata.design, na.rm=TRUE)
+### If you wish to compare with SRS example
+# svyratio(~mass, ~height, design=my.design, na.rm=TRUE)
 
 ```
 
