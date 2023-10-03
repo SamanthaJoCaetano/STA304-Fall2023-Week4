@@ -191,10 +191,7 @@ Run a logistic regression model mass being over 100lbs given height and sex.
 ```{r}
 ## Remove missing mass
 
-
 ## Create a new variable called `mass_over100`. 
-
-
 
 ## Create model using glm
 
