@@ -123,8 +123,14 @@ d. 0.06
 
 What is the model in this example?
 
+$$y_{mass} = \beta_0 + \beta_1 x_{height} + \epsilon$$
+
+This is a "simple linear regression" model (because there is only one numeric $x$ variable).
 
 What is the estimate of the model?
+
+$$\hat{y}_{mass} = \hat{\beta_0} + \hat{\beta_1} x_{height}$$
+$$\hat{y}_{mass} = -13.81 + 0.64 x_{height}$$
 
 ### Task 2: Create a Linear Model to predict mass
 
@@ -139,11 +145,23 @@ summary(lm(mass ~ height, data=starwars))
 
 ```
 
+
+What is the model in this example?
+
+$$y_{mass} = \beta_0 + \beta_1 x_{height} + \epsilon$$
+This is a "simple linear regression" model (because there is only one numeric $x$ variable).
+
+What is the estimate of the model?
+
+$$\hat{y}_{mass} = \hat{\beta_0} + \hat{\beta_1} x_{height}$$
+$$\hat{y}_{mass} = -13.81 + 0.64 x_{height}$$
+
 What is the different between the output here and the outcome in Task 1? What is similar?
 
 **Standard errors are different, but estimates are the same.**
 
 What happens if you change the $N$ in Task 1? Try setting $N=87, 200, 1000, 10000$
+
 
 
 ### Task 3: Create a Linear Model to predict mass
@@ -167,6 +185,19 @@ summary(mymodel)
 
 ```
 
+What is the model in this example?
+
+$$y_{mass} = \beta_0 + \beta_1 x_{height} + \beta_2x_{herm} + \beta_3x_{male} + + \beta_4x_{none} + \epsilon$$
+This is a "simple linear regression" model (because there is only one numeric $x$ variable).
+
+What is the estimate of the model?
+
+$$\hat{y}_{mass} = \hat{\beta_0} + \hat{\beta_1} x_{height} + \hat{ \beta_2}x_{herm} + \hat{\beta_3}x_{male} + \hat{\beta_4}x_{none}$$
+$$\hat{y}_{mass} = -52.85 + 0.64x_{height} + 1299.71x_{herm} + 20.84x_{male} + 33.69x_{none}$$
+Note, the variables $x_{herm}$, $x_{male}$ and $x_{none}$ are "dummy" variables. They are coded such that they indicate whether or not the character is in that sex category.
+
+
+
 Based on the output, what is the estimated mass of a male character who is 175 units tall?
 
 ```{r}
@@ -175,10 +206,18 @@ predict(mysvylm, tibble(height=175, sex="male"))
 predict(mymodel, tibble(height=175, sex="male"))
 ```
 
-What is the model in this example?
+Based on the output, what is the estimated mass of a female character who is 175 units tall?
 
+```{r}
+-52.85109 + 0.63508*175
+predict(mysvylm, tibble(height=175, sex="female"))
+predict(mymodel, tibble(height=175, sex="female"))
+```
 
-What is the estimate of the model?
+What is the expected difference in the mass of a male character vs a female character of the same height?
+
+We expect male characters to have a mass of 20.84 units higher than female characters of the same height.
+
 
 ### Task 4: Create a Logistic Regression Model to predict if mass exceeds 100lb.
 

@@ -177,6 +177,13 @@ Based on the output, what is the estimated mass of a male character who is 175 u
 Go to [pollev.com/sta](pollev.com/sta) to put in your answer.
 
 
+
+Based on the output, what is the estimated mass of a female character who is 175 units tall?
+
+
+What is the expected difference in the mass of a male character vs a female character of the same height?
+
+
 ### Task 4 (5min): Create a Logistic Regression Model to predict if mass exceeds 100lb.
 
 Run a logistic regression model mass being over 100lbs given height and sex. 
