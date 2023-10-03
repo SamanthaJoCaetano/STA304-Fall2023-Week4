@@ -189,8 +189,6 @@ What is the expected difference in the mass of a male character vs a female char
 Run a logistic regression model mass being over 100lbs given height and sex. 
 
 ```{r}
-## Using the Survey Library
-
 ## Remove missing mass
 
 

@@ -224,8 +224,6 @@ We expect male characters to have a mass of 20.84 units higher than female chara
 Run a logistic regression model mass being over 100lbs given height and sex. 
 
 ```{r}
-## Using the Survey Library
-
 ## Remove missing mass
 
 starwars <- starwars %>% filter(!is.na(mass))
@@ -235,8 +233,7 @@ starwars <- starwars %>% filter(!is.na(mass))
 starwars <- starwars %>%  mutate(
   mass_over100 = case_when(
     mass > 100 ~ 1, ## 1 = Yes, over 100lbs
-    mass <= 100 ~ 0)
-)
+    mass <= 100 ~ 0))
 
 
 ## Using lm
@@ -247,8 +244,12 @@ summary(my_glm)
 
 What is the model in this example?
 
+$$log(\frac{p}{1-p}) = \beta_0 + \beta_1 x_{height} + \beta_2x_{herm} + \beta_3x_{male} + + \beta_4x_{none}$$
 
 What is the estimate of the model?
+
+$$log\Big(\frac{\hat{p}}{1-\hat{p}}\Big) = \hat{\beta_0} + \hat{\beta_1} x_{height} + \hat{ \beta_2}x_{herm} + \hat{\beta_3}x_{male} + \hat{\beta_4}x_{none}$$
+$$log\Big(\frac{\hat{p}}{1-\hat{p}}\Big) = -28.90 + 0.06 x_{height} + 36.9x_{herm} + 15.83x_{male} + 17.79x_{none}$$
 
 
 Based off the above output, what is the predicted probability of a male who is 170cm tall being over 100lbs?
