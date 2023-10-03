@@ -101,7 +101,7 @@ Use the `svyglm()` function in the `survey` library to run a linear regression e
 
 ```{r}
 #install.packages("survey")
-#library(survey)
+library(survey)
 
 ## Using the Survey Library
 n=87
