@@ -121,6 +121,10 @@ a. -13.81
 c. 0.64
 d. 0.06
 
+What is the model in this example?
+
+
+What is the estimate of the model?
 
 ### Task 2: Create a Linear Model to predict mass
 
@@ -171,6 +175,10 @@ predict(mysvylm, tibble(height=175, sex="male"))
 predict(mymodel, tibble(height=175, sex="male"))
 ```
 
+What is the model in this example?
+
+
+What is the estimate of the model?
 
 ### Task 4: Create a Logistic Regression Model to predict if mass exceeds 100lb.
 
@@ -197,6 +205,11 @@ my_glm <- glm(mass_over100 ~ height + sex, data=starwars, family = "binomial")
 summary(my_glm)
 
 ```
+
+What is the model in this example?
+
+
+What is the estimate of the model?
 
 
 Based off the above output, what is the predicted probability of a male who is 170cm tall being over 100lbs?

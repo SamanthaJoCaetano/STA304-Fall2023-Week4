@@ -119,26 +119,31 @@ d. 0.06
 
 Go to [pollev.com/sta](pollev.com/sta) to put in your answer.
 
+
+What is the model in this example?
+
+
+What is the estimate of the model?
+
+
 ### Task 2 (4min): Create a Linear Model to predict mass
 
 Use the `lm()` function in the `survey` library to run a linear regression estimation of mass given height.
 
 ```{r}
-#install.packages("survey")
-library(survey)
+# using the lm() function
 
-## Using the Survey Library
-summary(lm(mass ~ height, data=starwars))
 
 ```
 
 What is the different between the output here and the outcome in Task 1? What is similar?
 
-Go to [pollev.com/sta](pollev.com/sta) to put in your answer.
-
-
 (Try on your own) What happens if you change the $N$ in Task 1? Try setting $N=87, 200, 1000, 10000$
 
+What is the model in this example?
+
+
+What is the estimate of the model?
 
 ### Task 3 (3min): Create a Linear Model to predict mass
 
@@ -159,6 +164,13 @@ summary(mysvylm)
 summary(lm(mass ~ height + sex, data=starwars))
 
 ```
+
+What is the model in this example?
+
+
+What is the estimate of the model?
+
+
 
 Based on the output, what is the estimated mass of a male character who is 175 units tall?
 
@@ -183,6 +195,11 @@ Run a logistic regression model mass being over 100lbs given height and sex.
 
 
 ```
+
+What is the model in this example?
+
+
+What is the estimate of the model?
 
 
 Based off the above output, what is the predicted probability of a male who is 170cm tall being over 100lbs?
